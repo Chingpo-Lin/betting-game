@@ -1,0 +1,81 @@
+<html>
+<head>
+  <style>
+      body {
+          text-align: center;
+      }
+      #title {
+          text-align: center;
+          background-color: goldenrod;
+          font-style: italic;
+          font-size: 20px;
+          width: 100%;
+          padding-top: 40px;
+          height: 150px;
+      }
+      #signup{
+          width: 200px;
+          height: 30px;
+          margin-top: 20px;
+
+          color: black;
+      }
+      #login {
+
+      }
+      #error {
+          color: red;
+      }
+      #log {
+          margin-right: 50px;
+      }
+      #back {
+          background-image: url("/images/money.jpeg");
+          opacity: 0.9;
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+  </style>
+</head>
+<body>
+<div id="title">
+  <h1> Gambling site</h1>
+  <p>
+    <a href="/login" id="log"><span>login</span></a>
+    <a href="/home" id="home"><span>home</span></a>
+  </p>
+</div>
+
+<div id="back">
+  <div>
+    <br>
+    <br>
+    <form id="login" method="post" action="/check">
+      <label>
+        <b>User Name</b>
+      </label>
+      <input type="text" name="user" id="Uname" placeholder="Username">
+      <br><br>
+      <label>
+        <b>Password&nbsp;&nbsp;</b>
+      </label>
+      <input type="Password" name="password" id="Pass" placeholder="Password">
+      <br><br>
+      <label>
+        <b>Confirm&nbsp;&nbsp;&nbsp;&nbsp;</b>
+      </label>
+      <input type="Password" name="confirm" id="Pass" placeholder="Confirm Password">
+      <br><br>
+      &nbsp;<button id="signup">Sign Up</button>
+  <!--    <p>Back to <a href="/home"><span> home </span></a></p>-->
+  <!--    <p>Go to <a href="/login"><span> login </span></a></p>-->
+      <% if params and params[:err]%>
+        <p id="error">Password are not matched</p>
+      <% end %>
+    </form>
+  </div>
+</div>
+</body>
+</html>

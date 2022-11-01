@@ -1,0 +1,158 @@
+
+<html>
+<head>
+  <style>
+      body, html {
+          height: 100%;
+      }
+      #title {
+          text-align: center;
+          background-color: goldenrod;
+          font-style: italic;
+          font-size: 20px;
+          width: 100%;
+          padding-top: 40px;
+          height: 150px;
+      }
+      #bet{
+          width: 200px;
+          height: 30px;
+          margin-top: 20px;
+          color: black;
+      }
+      #account {
+          margin-top: 20px;
+          width: 300px;
+          height: 350px;
+          float: right;
+          padding: 5px;
+          margin-right: 0px;
+          border: 3px solid #ccc;
+          text-align: center;
+          background-color:blanchedalmond;
+      }
+      #betbox {
+          margin-top: 20px;
+      }
+      #box {
+          display: flex;
+          align-items:flex-start;
+          justify-content:center;
+      }
+      #betboard {
+          margin-right: 100px;
+      }
+      #history {
+          background-color:blanchedalmond;
+          color:black;
+          width: 400px;
+          height: 200px;
+          position: fixed;
+          bottom: 0;
+          padding: 10px;
+          margin: 10px;
+          border: 3px solid #ccc;
+          text-align: center;
+      }
+      #center {
+          display: flex;
+          justify-content:center;
+          width: 100%;
+      }
+      #guessTitle {
+          margin-top: 60px;
+      }
+      .remind {
+          color: red;
+      }
+      #back {
+          background-image: url("/images/money.jpeg");
+          opacity: 0.9;
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      #userDisplay {
+          font-size: 30px;
+      }
+      #signout {
+          margin-right: 50px;
+      }
+      #msg {
+          color: red;
+      }
+  </style>
+</head>
+<body>
+<div id="title">
+  <h1> Gambling site</h1>
+  <p>
+    <a href="/signout" id="signout"><span>signout</span></a>
+    <a href="/home" id="home"><span>home</span></a>
+  </p>
+</div>
+
+<div id="back">
+  <div id="box">
+    <div id="betboard">
+      <p id="userDisplay"> Welcome, <b style="font-style: italic"><%=session["user"] %></b></p>
+      <p id="guessTitle"> Guess Dice Number (1-6)</p>
+      <form id="betbox" method="post" action="/play">
+        <label>
+          <b>YOUR BET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+        </label>
+        <input type="text" name="money" id="money" placeholder="Enter Your Money">
+        <br><br>
+        <label>
+          <b>YOUR GUESS</b>
+        </label>
+        <input type="number" name="guess" id="guess" placeholder="Enter Your Guess">
+        <br><br>
+        &nbsp;<button id="bet">Bet</button>
+        <br><br>
+        <p id="msg">
+          <% if params %>
+          <% if params[:err] != nil and params[:err] == "1" %>
+            cannot let money or guess empty
+          <% elsif params[:err] != nil and params[:err] == "2"%>
+            please guess val between 1 to 6
+          <% elsif params[:dice] and params[:dice] %>
+              <% if params[:dice] == params[:guess] %>
+                You win <%= params[:money].to_i * 2%>, and the dice is <%= params[:dice] %>
+              <% else %>
+                You lost <%= params[:money]%>, you guess <%= params[:guess] %> but it's <%= params[:dice]%>
+              <% end %>
+          <% end %>
+          <% end %>
+        </p>
+      </form>
+    </div>
+
+    <div id="account">
+      <div>
+        <p>Your Current Reward:</p>
+        <br>
+        <p>Total Win: <%= session[:win] %> </p>
+        <p>Total Lose: <%= session[:loss] %></p>
+        <p>Total Profit: <%= session[:profit] %></p>
+        <br>
+        <p>IMPORTANCE:</p>
+        <p class="remind">Betting is HARMFUL to you and your family</p>
+        <p class="remind">Please stop at appropriate time</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="center">
+    <div id="history">
+      <p>Your Total Reward:</p>
+      <br>
+      <p>Total Win: </p>
+      <p>Total Lose: </p>
+      <p>Total Profit: </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
