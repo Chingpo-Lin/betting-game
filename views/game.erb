@@ -1,91 +1,10 @@
 
 <html>
 <head>
-  <style>
-      body, html {
-          height: 100%;
-      }
-      #title {
-          text-align: center;
-          background-color: goldenrod;
-          font-style: italic;
-          font-size: 20px;
-          width: 100%;
-          padding-top: 40px;
-          height: 150px;
-      }
-      #bet{
-          width: 200px;
-          height: 30px;
-          margin-top: 20px;
-          color: black;
-      }
-      #account {
-          margin-top: 20px;
-          width: 300px;
-          height: 350px;
-          float: right;
-          padding: 5px;
-          margin-right: 0px;
-          border: 3px solid #ccc;
-          text-align: center;
-          background-color:blanchedalmond;
-      }
-      #betbox {
-          margin-top: 20px;
-      }
-      #box {
-          display: flex;
-          align-items:flex-start;
-          justify-content:center;
-      }
-      #betboard {
-          margin-right: 100px;
-      }
-      #history {
-          background-color:blanchedalmond;
-          color:black;
-          width: 400px;
-          height: 200px;
-          position: fixed;
-          bottom: 0;
-          padding: 10px;
-          margin: 10px;
-          border: 3px solid #ccc;
-          text-align: center;
-      }
-      #center {
-          display: flex;
-          justify-content:center;
-          width: 100%;
-      }
-      #guessTitle {
-          margin-top: 60px;
-      }
-      .remind {
-          color: red;
-      }
-      #back {
-          background-image: url("/images/money.jpeg");
-          opacity: 0.9;
-          height: 100%;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-      }
-      #userDisplay {
-          font-size: 30px;
-      }
-      #signout {
-          margin-right: 50px;
-      }
-      #msg {
-          color: red;
-      }
-  </style>
+  <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div id="title">
+<div class="title">
   <h1> Gambling site</h1>
   <p>
     <a href="/signout" id="signout"><span>signout</span></a>
@@ -93,8 +12,23 @@
   </p>
 </div>
 
-<div id="back">
+<div class="back">
   <div id="box">
+    <div id="msgBoard">
+      <div>
+        <p style="text-align: center">Your Current History:</p>
+        <% session[:msg].each_with_index do |m, index| %>
+          <% if index == 0 %>
+            <p class="new"><%= m %></p>
+          <% else %>
+            <p><%= m %></p>
+          <% end %>
+        <% end %>
+
+        <br>
+      </div>
+    </div>
+
     <div id="betboard">
       <p id="userDisplay"> Welcome, <b style="font-style: italic"><%=session["user"] %></b></p>
       <p id="guessTitle"> Guess Dice Number (1-6)</p>
@@ -110,13 +44,15 @@
         <input type="number" name="guess" id="guess" placeholder="Enter Your Guess">
         <br><br>
         &nbsp;<button id="bet">Bet</button>
-        <br><br>
+        <br>
         <p id="msg">
           <% if params %>
           <% if params[:err] != nil and params[:err] == "1" %>
             cannot let money or guess empty
           <% elsif params[:err] != nil and params[:err] == "2"%>
-            please guess val between 1 to 6
+            please guess between 1 to 6
+            <% elsif params[:err] != nil and params[:err] == "3"%>
+            please do not give a negative money
           <% elsif params[:dice] and params[:dice] %>
               <% if params[:dice] == params[:guess] %>
                 You win <%= params[:money].to_i * 2%>, and the dice is <%= params[:dice] %>
@@ -148,9 +84,9 @@
     <div id="history">
       <p>Your Total Reward:</p>
       <br>
-      <p>Total Win: </p>
-      <p>Total Lose: </p>
-      <p>Total Profit: </p>
+      <p>Total Win: <%= @totalWin %> </p>
+      <p>Total Loss: <%= @totalLoss %></p>
+      <p>Total Profit: <%= @totalProfit %></p>
     </div>
   </div>
 </div>

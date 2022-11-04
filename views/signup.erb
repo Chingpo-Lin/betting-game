@@ -1,46 +1,9 @@
 <html>
 <head>
-  <style>
-      body {
-          text-align: center;
-      }
-      #title {
-          text-align: center;
-          background-color: goldenrod;
-          font-style: italic;
-          font-size: 20px;
-          width: 100%;
-          padding-top: 40px;
-          height: 150px;
-      }
-      #signup{
-          width: 200px;
-          height: 30px;
-          margin-top: 20px;
-
-          color: black;
-      }
-      #login {
-
-      }
-      #error {
-          color: red;
-      }
-      #log {
-          margin-right: 50px;
-      }
-      #back {
-          background-image: url("/images/money.jpeg");
-          opacity: 0.9;
-          height: 100%;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-      }
-  </style>
+  <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div id="title">
+<div class="title">
   <h1> Gambling site</h1>
   <p>
     <a href="/login" id="log"><span>login</span></a>
@@ -48,7 +11,7 @@
   </p>
 </div>
 
-<div id="back">
+<div class="back">
   <div>
     <br>
     <br>
@@ -68,11 +31,17 @@
       </label>
       <input type="Password" name="confirm" id="Pass" placeholder="Confirm Password">
       <br><br>
-      &nbsp;<button id="signup">Sign Up</button>
+      &nbsp;<button class="btn">Sign Up</button>
   <!--    <p>Back to <a href="/home"><span> home </span></a></p>-->
   <!--    <p>Go to <a href="/login"><span> login </span></a></p>-->
-      <% if params and params[:err]%>
+      <% if params and params[:err] == "2"%>
         <p id="error">Password are not matched</p>
+      <% end %>
+      <% if params and params[:err] == "1"%>
+        <p id="error">Cannot be length less than 3</p>
+      <% end %>
+      <% if params and params[:err] == "3"%>
+        <p id="error">User exists</p>
       <% end %>
     </form>
   </div>

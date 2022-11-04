@@ -1,0 +1,135 @@
+body, html {
+    height: 100%;
+    text-align: center;
+}
+.title {
+    text-align: center;
+    background-image: url("/images/back.jpeg");
+    opacity: 0.9;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-style: italic;
+    font-size: 20px;
+    width: 100%;
+    padding-top: 40px;
+    height: 150px;
+}
+
+#bet, .btn{
+    width: 200px;
+    height: 30px;
+    margin-top: 20px;
+    color: black;
+}
+#account {
+    margin-top: 20px;
+    width: 300px;
+    height: 350px;
+    float: right;
+    padding: 5px;
+    margin-right: 0px;
+    border: 3px solid #ccc;
+    text-align: center;
+    background-color:blanchedalmond;
+}
+#msgBoard {
+    margin-top: 20px;
+    text-align: justify;
+    width: 300px;
+    height: 350px;
+    float: right;
+    padding: 5px;
+    overflow: scroll;
+    margin-right: 100px;
+    border: 3px solid #ccc;
+    background-color:blanchedalmond;
+}
+#betbox {
+    margin-top: 20px;
+}
+#box {
+    display: flex;
+    align-items:flex-start;
+    justify-content:center;
+}
+#betboard {
+    margin-right: 100px;
+}
+#history {
+    background-color:blanchedalmond;
+    color:black;
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    margin: 10px;
+    border: 3px solid #ccc;
+    text-align: center;
+}
+#center {
+    display: flex;
+    justify-content:center;
+    width: 100%;
+}
+#guessTitle {
+    margin-top: 60px;
+}
+.remind {
+    color: red;
+}
+.back {
+    background-image: url("/images/money.jpeg");
+    opacity: 0.9;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#userDisplay {
+    font-size: 30px;
+}
+#signout, #log, #login, #signup {
+    margin-right: 50px;
+}
+#msg, #error {
+    color: red;
+}
+
+.welcomeText {
+    color: blue;
+}
+
+#welcome {
+    margin-bottom: 50px;
+}
+
+#signup {
+    color: green;
+}
+
+.new {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid goldenrod;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: cornsilk;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: goldenrod;
+}

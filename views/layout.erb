@@ -1,0 +1,30 @@
+
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+
+<body>
+  <div class="title">
+    <h1> Gambling site</h1>
+    <p>
+      <% if @game %>
+      <a href="/signout" id="signout"><span>signout</span></a>
+      <% end %>
+      <% if @signup %>
+      <a href="/login" id="log"><span>login</span></a>
+      <% end %>
+      <% if @login %>
+      <a href="/signup" id="signup"><span>signup</span></a>
+      <% end %>
+      <% if !@home %>
+      <a href="/home" id="home"><span>home</span></a>
+      <% end %>
+    </p>
+  </div>
+
+  <div id="back">
+    <%= yield %>
+  </div>
+</body>
+</html>
