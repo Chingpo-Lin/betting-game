@@ -1,94 +1,77 @@
 
-<html>
-<head>
-  <link href="style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="title">
-  <h1> Gambling site</h1>
-  <p>
-    <a href="/signout" id="signout"><span>signout</span></a>
-    <a href="/home" id="home"><span>home</span></a>
-  </p>
-</div>
-
-<div class="back">
-  <div id="box">
-    <div id="msgBoard">
-      <div>
-        <p style="text-align: center">Your Current History:</p>
-        <% session[:msg].each_with_index do |m, index| %>
-          <% if index == 0 %>
-            <p class="new"><%= m %></p>
-          <% else %>
-            <p><%= m %></p>
-          <% end %>
+<div id="box">
+  <div id="msgBoard">
+    <div>
+      <p style="text-align: center">Your Current History:</p>
+      <% session[:msg].each_with_index do |m, index| %>
+        <% if index == 0 %>
+          <p class="new"><%= m %></p>
+        <% else %>
+          <p><%= m %></p>
         <% end %>
+      <% end %>
 
-        <br>
-      </div>
-    </div>
-
-    <div id="betboard">
-      <p id="userDisplay"> Welcome, <b style="font-style: italic"><%=session["user"] %></b></p>
-      <p id="guessTitle"> Guess Dice Number (1-6)</p>
-      <form id="betbox" method="post" action="/play">
-        <label>
-          <b>YOUR BET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-        </label>
-        <input type="text" name="money" id="money" placeholder="Enter Your Money">
-        <br><br>
-        <label>
-          <b>YOUR GUESS</b>
-        </label>
-        <input type="number" name="guess" id="guess" placeholder="Enter Your Guess">
-        <br><br>
-        &nbsp;<button id="bet">Bet</button>
-        <br>
-        <p id="msg">
-          <% if params %>
-          <% if params[:err] != nil and params[:err] == "1" %>
-            cannot let money or guess empty
-          <% elsif params[:err] != nil and params[:err] == "2"%>
-            please guess between 1 to 6
-            <% elsif params[:err] != nil and params[:err] == "3"%>
-            please do not give a negative money
-          <% elsif params[:dice] and params[:dice] %>
-              <% if params[:dice] == params[:guess] %>
-                You win <%= params[:money].to_i * 2%>, and the dice is <%= params[:dice] %>
-              <% else %>
-                You lost <%= params[:money]%>, you guess <%= params[:guess] %> but it's <%= params[:dice]%>
-              <% end %>
-          <% end %>
-          <% end %>
-        </p>
-      </form>
-    </div>
-
-    <div id="account">
-      <div>
-        <p>Your Current Reward:</p>
-        <br>
-        <p>Total Win: <%= session[:win] %> </p>
-        <p>Total Lose: <%= session[:loss] %></p>
-        <p>Total Profit: <%= session[:profit] %></p>
-        <br>
-        <p>IMPORTANCE:</p>
-        <p class="remind">Betting is HARMFUL to you and your family</p>
-        <p class="remind">Please stop at appropriate time</p>
-      </div>
+      <br>
     </div>
   </div>
 
-  <div id="center">
-    <div id="history">
-      <p>Your Total Reward:</p>
+  <div id="betboard">
+    <p id="userDisplay"> Welcome, <b style="font-style: italic"><%=session["user"] %></b></p>
+    <p id="guessTitle"> Guess Dice Number (1-6)</p>
+    <form id="betbox" method="post" action="/play">
+      <label>
+        <b>YOUR BET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+      </label>
+      <input type="text" name="money" id="money" placeholder="Enter Your Money">
+      <br><br>
+      <label>
+        <b>YOUR GUESS</b>
+      </label>
+      <input type="number" name="guess" id="guess" placeholder="Enter Your Guess">
+      <br><br>
+      &nbsp;<button id="bet">Bet</button>
       <br>
-      <p>Total Win: <%= @totalWin %> </p>
-      <p>Total Loss: <%= @totalLoss %></p>
-      <p>Total Profit: <%= @totalProfit %></p>
+      <p id="msg">
+        <% if params %>
+        <% if params[:err] != nil and params[:err] == "1" %>
+          cannot let money or guess empty
+        <% elsif params[:err] != nil and params[:err] == "2"%>
+          please guess between 1 to 6
+          <% elsif params[:err] != nil and params[:err] == "3"%>
+          please do not give a negative money
+        <% elsif params[:dice] and params[:dice] %>
+            <% if params[:dice] == params[:guess] %>
+              You win <%= params[:money].to_i * 2%>, and the dice is <%= params[:dice] %>
+            <% else %>
+              You lost <%= params[:money]%>, you guess <%= params[:guess] %> but it's <%= params[:dice]%>
+            <% end %>
+        <% end %>
+        <% end %>
+      </p>
+    </form>
+  </div>
+
+  <div id="account">
+    <div>
+      <p>Your Current Reward:</p>
+      <br>
+      <p>Total Win: <%= session[:win] %> </p>
+      <p>Total Lose: <%= session[:loss] %></p>
+      <p>Total Profit: <%= session[:profit] %></p>
+      <br>
+      <p>IMPORTANCE:</p>
+      <p class="remind">Betting is HARMFUL to you and your family</p>
+      <p class="remind">Please stop at appropriate time</p>
     </div>
   </div>
 </div>
-</body>
-</html>
+
+<div id="center">
+  <div id="history">
+    <p>Your Total Reward:</p>
+    <br>
+    <p>Total Win: <%= @totalWin %> </p>
+    <p>Total Loss: <%= @totalLoss %></p>
+    <p>Total Profit: <%= @totalProfit %></p>
+  </div>
+</div>
