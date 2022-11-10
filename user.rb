@@ -2,7 +2,7 @@
 require 'dm-core'
 require 'dm-migrations'
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/user.db")
+# DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/user.db")
 
 configure :development do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/user.db")
