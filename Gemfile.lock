@@ -16,18 +16,13 @@ GEM
     dm-postgres-adapter (1.2.0)
       dm-do-adapter (~> 1.2.0)
       do_postgres (~> 0.10.6)
-    dm-sqlite-adapter (1.2.0)
-      dm-do-adapter (~> 1.2.0)
-      do_sqlite3 (~> 0.10.6)
     do_postgres (0.10.17)
-      data_objects (= 0.10.17)
-    do_sqlite3 (0.10.17)
       data_objects (= 0.10.17)
     eventmachine (1.2.7)
     ffi (1.15.5)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    pg (1.4.4)
+    pg (0.21.0)
     public_suffix (5.0.0)
     rack (2.2.4)
     rack-protection (3.0.2)
@@ -64,8 +59,7 @@ DEPENDENCIES
   dm-core
   dm-migrations
   dm-postgres-adapter
-  dm-sqlite-adapter
-  pg
+  pg (~> 0.20)
   sass
   sinatra
   slim
