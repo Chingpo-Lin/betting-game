@@ -11,7 +11,7 @@ GEM
     dm-do-adapter (1.2.0)
       data_objects (~> 0.10.6)
       dm-core (~> 1.2.0)
-    dm-migrations (1.1.0)
+    dm-migrations (1.2.0)
       dm-core (~> 1.2.0)
     dm-postgres-adapter (1.2.0)
       dm-do-adapter (~> 1.2.0)
