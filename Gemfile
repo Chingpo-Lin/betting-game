@@ -8,9 +8,9 @@ gem "thin"
 gem "pg", :group => :production
 gem "dm-postgres-adapter", :group => :production
 gem "dm-sqlite-adapter", :group => :development
-group :production do
-  gem 'pg'
-end
-group :development, :test do
-  gem 'sqlite3'
-end
+# group :production do
+#   gem 'pg'
+# end
+# group :development, :test do
+#   gem 'sqlite3'
+# end
