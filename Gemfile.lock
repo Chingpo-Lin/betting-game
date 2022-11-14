@@ -16,7 +16,12 @@ GEM
     dm-postgres-adapter (1.2.0)
       dm-do-adapter (~> 1.2.0)
       do_postgres (~> 0.10.6)
+    dm-sqlite-adapter (1.2.0)
+      dm-do-adapter (~> 1.2.0)
+      do_sqlite3 (~> 0.10.6)
     do_postgres (0.10.17)
+      data_objects (= 0.10.17)
+    do_sqlite3 (0.10.17)
       data_objects (= 0.10.17)
     eventmachine (1.2.7)
     ffi (1.15.5)
@@ -44,8 +49,6 @@ GEM
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
-    sqlite3 (1.5.3-arm64-darwin)
-    sqlite3 (1.5.3-x86_64-linux)
     temple (0.8.2)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
@@ -61,11 +64,11 @@ DEPENDENCIES
   dm-core
   dm-migrations
   dm-postgres-adapter
+  dm-sqlite-adapter
   pg
   sass
   sinatra
   slim
-  sqlite3
   thin
 
 BUNDLED WITH
