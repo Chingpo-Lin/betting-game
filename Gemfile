@@ -13,6 +13,7 @@ group :production do
   gem 'pg'
   gem 'dm-postgres-adapter'
 end
+
 group :development, :test do
   gem 'sqlite3'
 end
