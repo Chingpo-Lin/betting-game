@@ -10,9 +10,9 @@ get '/home' do
   erb(:home)  #looking for home.erb under views folder
 end
 
-get '/google' do
-  redirect 'http://www.google.com'
-end
+# get '/google' do
+#   redirect 'http://www.google.com'
+# end
 
 get '/login' do
   @login = 1
