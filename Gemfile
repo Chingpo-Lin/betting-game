@@ -11,6 +11,7 @@ gem 'pg', :group => :production
 # gem "dm-sqlite-adapter", :group => :development
 group :production do
   gem 'pg'
+  gem 'dm-postgres-adapter'
 end
 group :development, :test do
   gem 'sqlite3'
