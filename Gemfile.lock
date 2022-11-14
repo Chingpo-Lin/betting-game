@@ -65,7 +65,7 @@ DEPENDENCIES
   dm-migrations
   dm-postgres-adapter
   dm-sqlite-adapter
-  pg (~> 0.20)
+  pg
   sass
   sinatra
   slim
